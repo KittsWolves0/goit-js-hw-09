@@ -75,7 +75,7 @@ const gallery = document.querySelector(".gallery")
 
 gallery.insertAdjacentHTML("beforeend", createImages(images));
 
-new SimpleLightbox('.gallery a', { overlayOpacity: 0.7, captionsData: "alt", captionDelay: 250, showCounter: false });
+new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250, showCounter: false });
 
 
 function createImages(arr) {
