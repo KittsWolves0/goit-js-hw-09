@@ -17,7 +17,6 @@ function handlerInput(event) {
     formData.message = formMes.value.trim();   
     formData.email = formMail.value.trim();
     localStorage.setItem(locStoreKey, JSON.stringify(formData));
-    console.log(localStorage.getItem(locStoreKey));
 }
 
 function populateText() {
@@ -42,6 +41,3 @@ function handlerSub(event) {
     localStorage.removeItem(locStoreKey);
     form.reset();
 }
-
-console.log(JSON.parse(localStorage.getItem(locStoreKey)));
-    
