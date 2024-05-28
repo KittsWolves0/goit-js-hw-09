@@ -4,29 +4,27 @@ const formData = {
 }
 
 const form = document.querySelector(".feedback-form");
+const formMes = document.querySelector("textarea");
+const formMail = document.querySelector("input");
 const locStoreKey = "feedback-form-state";
 
 
 form.addEventListener("submit", handlerSub);
-form.email.addEventListener("input", handlerEmail);
-form.message.addEventListener("input", handlerMessage);
+form.addEventListener("input", handlerInput);
 populateText();
 
-function handlerMessage(event) {
-    formData.message = event.target.value.trim();    
+function handlerInput(event) {
+    formData.message = formMes.value.trim();   
+    formData.email = formMail.value.trim();
     localStorage.setItem(locStoreKey, JSON.stringify(formData));
-}
-
-function handlerEmail(event) {
-    formData.email = event.target.value.trim();
-    localStorage.setItem(locStoreKey, JSON.stringify(formData));
+    console.log(localStorage.getItem(locStoreKey));
 }
 
 function populateText() {
     const mesData = JSON.parse(localStorage.getItem(locStoreKey));
-    if (mesData.email || mesData.message) {
-        form.email.value = mesData.email;
-        form.message.value = mesData.message;
+    if (mesData) {
+        form.email.value = mesData.email.trim();
+        form.message.value = mesData.message.trim();
     }
 }
 
@@ -44,3 +42,6 @@ function handlerSub(event) {
     localStorage.removeItem(locStoreKey);
     form.reset();
 }
+
+console.log(JSON.parse(localStorage.getItem(locStoreKey)));
+    
